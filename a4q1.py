@@ -10,7 +10,7 @@ import TQueue
 stk=TStack.create()
 que=TQueue.create()
 #opening the cases file
-case_file=open('Desktop/cases.txt')
+case_file=open('cases.txt')
 month=1 #to represent current month
 #looping through all lines in the case_file
 for line in case_file:
