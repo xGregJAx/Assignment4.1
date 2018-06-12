@@ -6,7 +6,7 @@
 import TStack
 
 import TQueue
-#creating TStack and TQueue objects
+#create TStack and TQueue objects
 stk=TStack.create()
 que=TQueue.create()
 #opening the cases file
