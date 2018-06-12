@@ -1,12 +1,12 @@
-#Gregory Albert
-#gja136
-#11158762
-#CMPT 145 - L03
+# Gregory Albert
+# gja136
+# 11158762
+# CMPT 145 - L03
 
 import TStack as Stack
 
-def create():
 
+def create():
     """
 
     Purpose
@@ -27,8 +27,8 @@ def create():
 
     return q2
 
-def is_empty(queue):
 
+def is_empty(queue):
     """
 
     Purpose
@@ -45,16 +45,15 @@ def is_empty(queue):
 
     """
 
-    #checking if both stacks are empty
+    # checking if both stacks are empty
 
     if Stack.is_empty(queue['e-stack']) and Stack.is_empty(queue['d-stack']):
-
         return True
 
     return False
 
-def size(queue):
 
+def size(queue):
     """
 
     Purpose
@@ -71,12 +70,12 @@ def size(queue):
 
     """
 
-    #returning the size of two stacks combined
+    # returning the size of two stacks combined
 
-    return Stack.size(queue['e-stack'])+Stack.size(queue['d-stack'])
+    return Stack.size(queue['e-stack']) + Stack.size(queue['d-stack'])
+
 
 def enqueue(queue, value):
-
     """
 
     Purpose
@@ -99,18 +98,17 @@ def enqueue(queue, value):
 
     """
 
-    #removing all elements from d-stack (if exists) and pushing to e-stack
+    # removing all elements from d-stack (if exists) and pushing to e-stack
 
     while not Stack.is_empty(queue['d-stack']):
+        Stack.push(queue['e-stack'], Stack.pop(queue['d-stack']))
 
-        Stack.push(queue['e-stack'],Stack.pop(queue['d-stack']))
+    # pushing to the top of e-stack
 
-    #pushing to the top of e-stack
+    Stack.push(queue['e-stack'], value)
 
-    Stack.push(queue['e-stack'],value)
 
 def dequeue(queue):
-
     """
 
     Purpose
@@ -131,22 +129,20 @@ def dequeue(queue):
 
         """
 
-    #removing all elements from e-stack (if exists) and pushing to d-stack
+    # removing all elements from e-stack (if exists) and pushing to d-stack
 
     while not Stack.is_empty(queue['e-stack']):
+        Stack.push(queue['d-stack'], Stack.pop(queue['e-stack']))
 
-        Stack.push(queue['d-stack'],Stack.pop(queue['e-stack']))
-
-    #removing and returning top element of d-stack, if not empty
+    # removing and returning top element of d-stack, if not empty
 
     if not is_empty(queue):
-
         return Stack.pop(queue['d-stack'])
 
     return None
 
-def peek(queue):
 
+def peek(queue):
     """
 
     Purpose
@@ -168,45 +164,43 @@ def peek(queue):
     """
 
     while not Stack.is_empty(queue['e-stack']):
+        Stack.push(queue['d-stack'], Stack.pop(queue['e-stack']))
 
-        Stack.push(queue['d-stack'],Stack.pop(queue['e-stack']))
-
-    #returning (without removing) top element of d-stack, if not empty
+    # returning (without removing) top element of d-stack, if not empty
 
     if not is_empty(queue):
-
         return Stack.peek(queue['d-stack'])
 
     return None
 
-#main.py
 
-import QueueTwo #importing QueueTwo
+# main.py
 
-#creating a QueueTwo object
+import QueueTwo  # importing QueueTwo
 
-queue2=QueueTwo.create()
+# creating a QueueTwo object
 
-#enqueuing some numbers
+queue2 = QueueTwo.create()
 
-QueueTwo.enqueue(queue2,10)
+# enqueuing some numbers
 
-QueueTwo.enqueue(queue2,20)
+QueueTwo.enqueue(queue2, 10)
 
-QueueTwo.enqueue(queue2,30)
+QueueTwo.enqueue(queue2, 20)
 
-#performing different operations
+QueueTwo.enqueue(queue2, 30)
 
-print('Size: ',QueueTwo.size(queue2)) #should display 3
+# performing different operations
 
-print('Front element: ',QueueTwo.peek(queue2)) #10
+print('Size: ', QueueTwo.size(queue2))  # should display 3
 
-print('Queue: ',end=' ')#printing the queue elements in a single line
+print('Front element: ', QueueTwo.peek(queue2))  # 10
+
+print('Queue: ', end=' ')  # printing the queue elements in a single line
 
 while not QueueTwo.is_empty(queue2):
+    print(QueueTwo.dequeue(queue2), end=' ')  # 10 20 30
 
-    print(QueueTwo.dequeue(queue2),end=' ') #10 20 30
+print()  # blank line
 
-print()#blank line
-
-print('Is empty now: ',QueueTwo.is_empty(queue2)) #True
+print('Is empty now: ', QueueTwo.is_empty(queue2))  # True
