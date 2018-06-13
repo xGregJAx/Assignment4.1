@@ -7,7 +7,7 @@ import TStack
 
 import TQueue
 #create TStack and TQueue objects
-stackk=TStack.create()
+stack=TStack.create()
 queue=TQueue.create()
 #opening the cases file
 case_file=open('cases.txt')
