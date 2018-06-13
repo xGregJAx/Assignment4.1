@@ -7,8 +7,8 @@ import TStack
 
 import TQueue
 #create TStack and TQueue objects
-stk=TStack.create()
-que=TQueue.create()
+stackk=TStack.create()
+queue=TQueue.create()
 #opening the cases file
 case_file=open('cases.txt')
 month=1 #to represent current month
@@ -19,25 +19,25 @@ for line in case_file:
 #spliting the line by whitespaces
     cases=line.split(' ')
 #looping through the resultant list
-    for c in cases:
+    for i in cases:
     #checking if its an urgent case
-        if c.startswith('URG'):
+        if i.startswith('URG'):
       #urgent case, pushing to stack
-            TStack.push(stk,c)
+            TStack.push(stack,i)
         else:
       #normal case, pushing to queue
-            TQueue.enqueue(que,c)
+            TQueue.enqueue(queue,i)
 #displaying the cases
     print('Month {:d}:'.format(month),end=' ')
 #looping while stack is not empty
-    while not TStack.is_empty(stk):
+    while not TStack.is_empty(stack):
     #removing the element at the top, and printing
-        c=TStack.pop(stk)
-        print(c,end=' ')
+        i=TStack.pop(stack)
+        print(i,end=' ')
 #looping while queue is not empty
-    while not TQueue.is_empty(que):
+    while not TQueue.is_empty(queue):
     #removing the element at the front, and printing
-        c=TQueue.dequeue(que)
-        print(c,end=' ')
-    print() #blank line
-    month+=1 #next month
+        c=TQueue.dequeue(queue)
+        print(i,end=' ')
+    print()
+    month+=1
